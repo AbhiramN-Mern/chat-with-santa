@@ -1,0 +1,188 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Nunito:wght@400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    /* Christmas color palette */
+    --background: 15 25% 6%;
+    --foreground: 40 50% 95%;
+
+    --card: 15 30% 10%;
+    --card-foreground: 40 50% 95%;
+
+    --popover: 15 30% 10%;
+    --popover-foreground: 40 50% 95%;
+
+    /* Rich crimson red */
+    --primary: 0 72% 45%;
+    --primary-foreground: 40 50% 98%;
+    --primary-glow: 0 80% 55%;
+
+    /* Warm gold */
+    --secondary: 45 85% 55%;
+    --secondary-foreground: 15 25% 6%;
+
+    /* Forest green */
+    --accent: 145 50% 30%;
+    --accent-foreground: 40 50% 95%;
+
+    --muted: 15 20% 15%;
+    --muted-foreground: 40 20% 60%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 40 50% 98%;
+
+    --border: 15 20% 20%;
+    --input: 15 20% 18%;
+    --ring: 0 72% 45%;
+
+    --radius: 1rem;
+
+    /* Custom Christmas tokens */
+    --santa-red: 0 75% 50%;
+    --santa-red-glow: 0 85% 60%;
+    --christmas-gold: 45 90% 55%;
+    --christmas-gold-glow: 45 95% 70%;
+    --snow-white: 40 50% 98%;
+    --holly-green: 145 55% 35%;
+    --night-sky: 220 40% 8%;
+
+    /* Gradients */
+    --gradient-christmas: linear-gradient(135deg, hsl(0 75% 50%), hsl(0 85% 60%));
+    --gradient-gold: linear-gradient(135deg, hsl(45 90% 55%), hsl(40 85% 45%));
+    --gradient-night: radial-gradient(ellipse at top, hsl(220 30% 15%) 0%, hsl(220 40% 5%) 100%);
+
+    /* Shadows */
+    --shadow-glow-red: 0 0 40px hsl(0 80% 50% / 0.4);
+    --shadow-glow-gold: 0 0 30px hsl(45 90% 55% / 0.3);
+    --shadow-call-button: 0 10px 50px hsl(0 80% 50% / 0.5), 0 0 80px hsl(0 80% 50% / 0.3);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 15 25% 6%;
+    --foreground: 40 50% 95%;
+    --card: 15 30% 10%;
+    --card-foreground: 40 50% 95%;
+    --popover: 15 30% 10%;
+    --popover-foreground: 40 50% 95%;
+    --primary: 0 72% 45%;
+    --primary-foreground: 40 50% 98%;
+    --secondary: 45 85% 55%;
+    --secondary-foreground: 15 25% 6%;
+    --muted: 15 20% 15%;
+    --muted-foreground: 40 20% 60%;
+    --accent: 145 50% 30%;
+    --accent-foreground: 40 50% 95%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 40 50% 98%;
+    --border: 15 20% 20%;
+    --input: 15 20% 18%;
+    --ring: 0 72% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Nunito', sans-serif;
+    background: var(--gradient-night);
+    min-height: 100vh;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+@layer components {
+  .christmas-glow {
+    box-shadow: var(--shadow-glow-red);
+  }
+
+  .gold-glow {
+    box-shadow: var(--shadow-glow-gold);
+  }
+
+  .call-button-glow {
+    box-shadow: var(--shadow-call-button);
+  }
+}
+
+/* Snowfall animation */
+@keyframes snowfall {
+  0% {
+    transform: translateY(-10vh) translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) translateX(20px);
+    opacity: 0.3;
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+}
+
+@keyframes ring-shake {
+  0%, 100% { transform: rotate(0deg); }
+  10%, 30%, 50%, 70%, 90% { transform: rotate(-10deg); }
+  20%, 40%, 60%, 80% { transform: rotate(10deg); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+.animate-snowfall {
+  animation: snowfall linear infinite;
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 2s ease-in-out infinite;
+}
+
+.animate-ring-shake {
+  animation: ring-shake 0.5s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-twinkle {
+  animation: twinkle 2s ease-in-out infinite;
+}
